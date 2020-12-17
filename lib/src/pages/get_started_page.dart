@@ -2,22 +2,34 @@ import 'package:flutter/material.dart';
 
 import 'dart:ui';
 
-class GetStartedPage extends StatelessWidget {
+class GetStartedPage extends StatefulWidget {
 
+  @override
+  _GetStartedPageState createState() => _GetStartedPageState();
+}
+
+class _GetStartedPageState extends State<GetStartedPage> {
+  
   final subTitleStyle = TextStyle(
-      color: Color.fromRGBO(45, 64, 89, 0.7),
-      fontSize: 24.0,
-      fontFamily: 'Ubuntu',
-      fontWeight: FontWeight.w500
-      
-    );
+    color: Color.fromRGBO(45, 64, 89, 0.7),
+    fontSize: 24.0,
+    fontFamily: 'Ubuntu',
+    fontWeight: FontWeight.w500  
+  );
 
-  final titleStyle   = TextStyle(
-      color: Color(0xFF2D4059),
-      fontSize: 36.0,
-      fontFamily: 'Ubuntu',
-      fontWeight: FontWeight.w400
-    );
+  final titleStyle    = TextStyle(
+    color: Color(0xFF2D4059),
+    fontSize: 36.0,
+    fontFamily: 'Ubuntu',
+    fontWeight: FontWeight.w400
+  );
+
+  final darkFont      = TextStyle(
+    fontFamily: 'Ubuntu',
+    fontWeight: FontWeight.w400,
+    fontSize: 18.0,
+    color: Color(0xFF2D4059)
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +66,9 @@ class GetStartedPage extends StatelessWidget {
  Widget _page2() {
    return Stack(
      children: [
-       _background(),
-       _texts('Go Rollings!', 'Crear cuenta'),
-
+        _background(),
+        _texts('Go Rollings!', 'Crear cuenta'),
+        _registerFields(),
      ],
    );
  }
@@ -115,4 +127,31 @@ class GetStartedPage extends StatelessWidget {
     );
   }
 
+  Widget _registerFields() {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric( horizontal: 32.0, vertical: 16.0 ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          
+          TextFormField(
+            style: darkFont,
+            decoration: InputDecoration(
+              hintText: 'nickname (nombre de usuario)',
+              fillColor: Color.fromRGBO(45, 64, 89, 1),
+            ),
+          ),
+          TextFormField(
+            style: darkFont,
+            decoration: InputDecoration(
+              hintText: 'example@example.com',
+              fillColor: Color.fromRGBO(45, 64, 89, 1),
+            ),
+          ),
+
+        ],  
+      ),
+    );
+  }
 }
